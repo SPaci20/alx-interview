@@ -17,12 +17,12 @@ def pascal_triangle(n):
     if type(n) is not int and n < 0:
         return ([])
     row = []
-    for i in range(n):
+    for x in range(n):
         row.append([])
-        row[i].append(1)
-        if (i > 0):
-            for j in range(1, i):
-                row[i].append(row[i - 1][j - 1] + row[i - 1][j])
-            row[i].append(1)
+        row[x].append(1)
+        if (x > 0):
+            for y in range(1, x):
+                row[x].append(row[x - 1][y - 1] + row[x - 1][y])
+            row[x].append(1)
 
     return (row)
