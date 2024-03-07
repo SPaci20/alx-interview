@@ -4,7 +4,7 @@ Pascal's Triangle
 """
 
 
-def pascal-trianlge(n):
+def pascal_triangle(n):
     if n <= 0:
         return []
 
