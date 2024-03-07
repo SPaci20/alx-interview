@@ -1,18 +1,18 @@
 #!/usr/bin/python3
-"""
-Pascal's Triangle
+"""Pascal's triangle.
 """
 
 
 def pascal_triangle(n):
-    if n <= 0:
-        return []
-
     triangle = []
+    if type(n) is not int or n <= 0:
+        return triangle
     for x in range(n):
-        row = [1] * (x + 1)
-        for y in range(1, x):
-            row[y] = triangle[x - 1][y - 1] + triangle[x - 1][y]
+        row = []
+        for y in range(x + 1):
+            if y == 0 or y == x:
+                row.append(1)
+            elif x > 0 and y > 0:
+                row.append(triangle[x - 1][y - 1] + triangle[x - 1][y])
         triangle.append(row)
-
-    return (triangle)
+    return triangle
