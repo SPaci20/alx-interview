@@ -1,30 +1,28 @@
 #!/usr/bin/python3
+'''The minimum operations coding challenge.
+'''
+
+
 def minOperations(n):
-    """
-    Function to calculate the minimum number of operations
-    needed to achieve n 'H' characters in the text file,
-    considering only 'Copy All' and 'Paste' operations.
-
-    Args:
-        n: The target number of 'H' characters.
-
-    Returns:
-        The minimum number of operations needed, or 0 if it's impossible.
-    """
-    if n == 0:
+    '''Computes the fewest number of operations needed to result
+    in exactly n H characters.
+    '''
+    if not isinstance(n, int):
         return 0
+    ops_count = 0
+    clipboard = 0
+    done = 1
+    while done < n:
+        if clipboard == 0:
+            clipboard = done
+            done += clipboard
+            ops_count += 2
+        elif n - done > 0 and (n - done) % done == 0:
+            clipboard = done
+            done += clipboard
+            ops_count += 2
+        elif clipboard > 0:
+            done += clipboard
+            ops_count += 1
 
-    chars = 1
-    operations = 0
-
-    while chars < n:
-
-        if chars * 2 >= n:
-            operations += 2
-            chars *= 2
-
-        else:
-            operations += 2
-            chars += chars
-
-    return operations
+    return ops_count
